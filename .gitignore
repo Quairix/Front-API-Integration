@@ -1,0 +1,17 @@
+.idea
+.gradle
+logs
+project/project
+project/target
+target
+tmp
+dist
+.cache
+null
+gradle
+out
+build
+bin
+web/.classpath
+web/.project
+web/.settings

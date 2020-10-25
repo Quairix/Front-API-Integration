@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Список функций</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/homepage.html}" th:text="#{label.pages.home.title}">home</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="?lang=en"><img class="langIcon" th:src="@{/resources/usa.png}"/></a>
+            </li>
+            <li style="margin-right:15px;">
+                <a href="?lang=ru_RU"><img class="langIcon" th:src="@{/resources/russian.png}"/></a>
+            </li>
+            <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="page">
+    <p sec:authorize="!hasAuthority('WRITE_PRIVILEGE')" th:text="#{message.unauth}">unauth</p>
+
+    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')">
+        <div class="container">
+            <h2>Текущие функции:</h2>
+            <table class="table">
+                <tr>
+                    <td>Id</td>
+                    <td>Имя</td>
+                    <td>Среда разработки1</td>
+                    <td>Среда разработки2</td>
+                    <td>Среда разработки3</td>
+                    <td>Среда разработки4</td>
+                    <td>Среда разработки5</td>
+                    <td>Тестировщик (id)</td>
+                    <td>Разработчик (id)</td>
+                    <td></td>
+                </tr>
+                <tr th:each="func : ${funcs}"  th:onclick="window.location='../page32.html'">
+                    <td th:text="${func.getId()}">-</td>
+                    <td th:text="${func.getName()}">-</td>
+                    <td th:text="${func.getEnvName()}">-</td>
+                    <td th:text="${func.getEnvName2()}">-</td>
+                    <td th:text="${func.getEnvName3()}">-</td>
+                    <td th:text="${func.getEnvName4()}">-</td>
+                    <td th:text="${func.getEnvName5()}">-</td>
+                    <td th:text="${func.getUserIdTester()}">-</td>
+                    <td th:text="${func.getUserIdDev()}">-</td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/page31.html}">Разработка</a>
+                        <a class="btn btn-warning" th:href="@{/page33.html}">Тестирование</a>
+                        <a class="btn btn-danger" th:href="@{deleteFunc(id=${func.getId()})}">Удалить</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

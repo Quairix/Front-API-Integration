@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+</head>
+<link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/homepage.html}" th:text="#{label.pages.home.title}">home</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="?lang=en" ><img class="langIcon" th:src="@{/resources/usa.png}"/></a>
+            </li>
+            <li style="margin-right:15px;">
+                <a href="?lang=ru_RU" ><img class="langIcon" th:src="@{/resources/russian.png}"/></a>
+            </li>
+            <li>
+                <a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="page">
+<div class="container">
+    <div th:if="${param.message != null}" class="alert alert-info" th:text="${param.message[0]}">message</div>
+
+    <h1 th:text="#{label.pages.console.title}">Панель управления</h1>
+    <p th:text="#{label.pages.console.roles}">Ваши роли:</p>
+    <div>
+        <p sec:authorize="hasAuthority('READ_PRIVILEGE')">user</p>
+        <p sec:authorize="hasAuthority('WRITE_PRIVILEGE')">admin</p>
+    </div>
+
+    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')">
+        <a class="btn btn-default" th:href="@{/users}" th:text="#{label.pages.admin}">Управление пользователями</a>
+    </div>
+
+    <br/>
+    <a class="btn btn-default" th:href="@{/changePassword.html}" th:text="#{message.changePassword}">Изменить пароль</a>
+
+</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</body>
+
+</html>

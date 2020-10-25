@@ -1,0 +1,51 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+//	id "org.flywaydb.flyway" version "6.4.3"
+}
+
+group = 'senderman'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator:2.0.4.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.0.4.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.0.4.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-taglibs:5.2.2.RELEASE'
+	implementation 'org.springframework.security:spring-security-core:5.2.2.RELEASE'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
+//	implementation 'javax.el:el-api:2.2'
+	implementation 'org.passay:passay:1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.0.4.RELEASE'
+	implementation 'org.postgresql:postgresql:42.2.4'
+	implementation 'com.google.guava:guava:20.0'
+	implementation 'com.github.ua-parser:uap-java:1.4.0'
+	implementation 'net.logstash.logback:logstash-logback-encoder:4.8'
+	implementation 'org.springframework.boot:spring-boot-configuration-processor:2.0.4.RELEASE'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.3.0'
+	implementation 'javax.interceptor:javax.interceptor-api:1.2'
+	implementation 'org.jboss.aerogear:aerogear-otp-java:1.0.0'
+	implementation 'org.glassfish:javax.el:3.0.0'
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	compile "org.flywaydb:flyway-core:6.4.3"
+	runtimeOnly 'javax.servlet:jstl:1.2'
+	testImplementation 'io.rest-assured:rest-assured:3.0.7'
+	testImplementation 'com.h2database:h2:1.4.197'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE'
+}
+
+profiles {
+
+}
+
+test {
+	useJUnitPlatform()
+}

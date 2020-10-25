@@ -1,0 +1,58 @@
+.page {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    color: black;
+    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    height: fill-available;
+}
+
+html{
+    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    height: fill-available;
+}
+
+.wrapper {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto
+}
+body{
+    background-image: url("/resources/bckgrnd.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    height: fill-available;
+}
+
+label {
+    padding-left: 0 !important
+}
+table {
+    background: rgba(255, 255, 255, 0.6)
+}
+
+.navbar-default {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: #a6a6a6;
+    color: black;
+    margin-bottom: 0;
+}
+.btn-default {
+    background: rgba(255, 255, 255, 0.8)
+}
+
+.alert {
+    margin-top: 10px;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand {
+    color: black;
+}
+
+.langIcon{
+    width: 25px;
+}

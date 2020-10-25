@@ -1,0 +1,74 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Добавление</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/homepage.html}" th:text="#{label.pages.home.title}">home</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="?lang=en"><img class="langIcon" th:src="@{/resources/usa.png}"/></a>
+            </li>
+            <li style="margin-right:15px;">
+                <a href="?lang=ru_RU"><img class="langIcon" th:src="@{/resources/russian.png}"/></a>
+            </li>
+            <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="page">
+    <div class="container">
+        <div class="row">
+            <h1>Описание API</h1>
+        </div>
+        <div class="row showF" style="margin: 10px 10px 0 10px">
+            <label>Название:</label>
+            <label>/findall</label>
+        </div>
+        <div class="row show" style="margin: 10px 10px 0 10px">
+            <label>Текущая ветка:</label>
+            <select class="form-control" style="width: 100%;">
+                <option value="1">
+                    master
+                </option>
+                <option value="2">
+                    test1
+                </option>
+                <option value="3">
+                    Test2
+                </option>
+            </select>
+        </div>
+        <div class="row show" style="margin: 10px 10px 0 10px">
+            <label>Список рабочих сред</label>
+            <select class="form-control" style="width: 100%;">
+                <option value="1">
+                    Deployment
+                </option>
+                <option value="2">
+                    Production
+                </option>
+                <option value="3">
+                    Test
+                </option>
+            </select>
+        </div>
+        <div class="row" style="margin: 10px 10px 0 10px">
+            <label>Тестировщик:</label>
+            <label>test@.test.com</label>
+        </div>
+        <div class="row" style="margin: 10px 10px 0 10px">
+            <label>Разработчик:</label>
+            <label>quarix@ya.ru</label>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>XML</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/homepage.html}" th:text="#{label.pages.home.title}">home</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="?lang=en"><img class="langIcon" th:src="@{/resources/usa.png}"/></a>
+            </li>
+            <li style="margin-right:15px;">
+                <a href="?lang=ru_RU"><img class="langIcon" th:src="@{/resources/russian.png}"/></a>
+            </li>
+            <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="page">
+    <div class="container">
+        <div class="row">
+            <h1>Получение данных функции</h1>
+            <div style="margin: 0 10px 0 10px">
+                <div style="display: inline-block; width: 150px;">
+                    <a class="btn btn-warning" th:href="@{/funcs.html}">Список функций</a>
+                </div>
+                <div style="display: inline-block; width: 150px; float:right; text-align: right;">
+                    <a class="btn btn-info" th:href="@{/page31.html}">JSON-представление</a>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 10px 10px 0 10px">
+            <label>Адрес функции:</label>
+            <input class="form-control" name='envName2' required="required" style="width: 100%;" type='text'
+                   value="localhost:9090/operations/1543"/>
+            <label>Данные:</label>
+            <textarea style="height: 50%; width: 100%;">
+<RmtInf>
+  <Strd>
+    <CdtrRefInf>
+      <Tp>
+        <CdOrPrtry>
+          <Cd>1543</Cd>
+        </CdOrPrtry>
+      <Issr> Vision Operations</Issr>
+      </Tp>
+      <Ref>010806817183</Ref>
+    </CdtrRefInf>
+  </Strd>
+</RmtInf>
+            </textarea>
+        </div>
+    </div>
+</div>
+</body>
+</html>

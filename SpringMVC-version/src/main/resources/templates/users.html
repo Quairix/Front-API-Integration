@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+    <title th:text="#{label.pages.home.title}">home</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/homepage.html}" th:text="#{label.pages.home.title}">home</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="?lang=en" ><img class="langIcon" th:src="@{/resources/usa.png}"/></a>
+            </li>
+            <li style="margin-right:15px;">
+                <a href="?lang=ru_RU" ><img class="langIcon" th:src="@{/resources/russian.png}"/></a>
+            </li>
+            <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="page">
+    <p sec:authorize="!hasAuthority('WRITE_PRIVILEGE')" th:text="#{message.unauth}">unauth</p>
+
+    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')">
+        <div class="container">
+            <h1>Панель управления пользователями</h1>
+            <h2>Текущие пользователи:</h2>
+            <table class="table">
+                <tr>
+                    <td>Id</td>
+                    <td>Email</td>
+                    <td>Имя</td>
+                    <td>Фамилия</td>
+                    <td>Роли</td>
+                    <td></td>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.getId()}">id</td>
+                    <td th:text="${user.getEmail()}">email</td>
+                    <td th:text="${user.getFirstName()}">fn</td>
+                    <td th:text="${user.getLastName()}">ln</td>
+                    <td th:each="role : ${user.getRoles()}"><p th:text="${role.getName()}"></p></td>
+                    <td>
+                        <p th:if='${user.isAdmin() == false}'><a class="btn btn-success"
+                                                                 th:href="@{addRole(id=${user.getId()})}">Добавить роль
+                            admin</a></p>
+                        <p th:if='${user.isAdmin() == false}'><a class="btn btn-danger"
+                                                                 th:href="@{delete(id=${user.getId()})}">Удалить
+                            пользователя</a></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

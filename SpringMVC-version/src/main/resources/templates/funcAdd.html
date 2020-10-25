@@ -1,0 +1,196 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Добавление</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/homepage.html}" th:text="#{label.pages.home.title}">home</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="?lang=en"><img class="langIcon" th:src="@{/resources/usa.png}"/></a>
+            </li>
+            <li style="margin-right:15px;">
+                <a href="?lang=ru_RU"><img class="langIcon" th:src="@{/resources/russian.png}"/></a>
+            </li>
+            <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="page">
+    <div class="container">
+
+        <form action="/" enctype="utf8" method="POST">
+            <div id="page1" class="show">
+                <div class="row">
+                    <h1>Enter the name of API</h1>
+                    <div style="margin: 0 10px 0 10px">
+                        <div style="display: inline-block; width: 150px;">
+                            <a class="btn btn-default" th:href="@{/homepage.html}">Home</a>
+                        </div>
+                        <div style="display: inline-block; width: 150px; float:right; text-align: right;">
+                            <a id="bpage2" class="btn btn-success" >Next</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row showF" style="margin: 10px 10px 0 10px">
+                    <input class="form-control" name='name' required="required" style="width: 100%;" type='text'
+                           value=""/>
+                    <span class="alert alert-danger col-sm-4" id="nameError" style="display:none"></span>
+                </div>
+            </div>
+            <div id="page2" class="hide">
+                <div class="row">
+                    <h1>Enter the names of Environment</h1>
+                    <div style="margin: 0 10px 0 10px">
+                        <div style="display: inline-block; width: 150px;">
+                            <a id="bpage1" class="btn btn-default" >Prev</a>
+                        </div>
+                        <div style="display: inline-block; width: 150px; float:right; text-align: right;">
+                            <a id="bpage3" class="btn btn-success" >Next</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row show" style="margin: 10px 10px 0 10px">
+                    <input class="form-control" name='envName' required="required" style="width: 100%;" type='text'
+                           value=""/>
+                    <span class="alert alert-danger col-sm-4" id="envNameError" style="display:none"></span>
+                    <br/>
+                    <input class="form-control" name='envName2' required="required" style="width: 100%;" type='text'
+                           value=""/>
+                    <span class="alert alert-danger col-sm-4" id="envName2Error" style="display:none"></span>
+                </div>
+                <a id="bshow3" class="btn btn-warning" style="float:right; margin: 10px 10px 0 10px">Add</a>
+                <div id="show3" class="row hide" style="margin: 10px 10px 0 10px">
+                    <input class="form-control" name='envName3' style="width: 100%;" type='text'
+                           value=""/>
+                    <span class="alert alert-danger col-sm-4" id="envName3Error" style="display:none"></span>
+                    <a id="bshow4" class="btn btn-warning" style="float:right; ">Add</a>
+                </div>
+                <div id="show4" class="row hide" style="margin: 10px 10px 0 10px">
+                    <input class="form-control" name='envName4' style="width: 100%;" type='text'
+                           value=""/>
+                    <span class="alert alert-danger col-sm-4" id="envName4Error" style="display:none"></span>
+                    <a id="bshow5" class="btn btn-warning"  style="float:right; ">Add</a>
+                </div>
+                <div id="show5" class="row hide" style="margin: 10px 10px 0 10px">
+                    <input class="form-control" name='envName5' style="width: 100%;" type='text'
+                           value=""/>
+                    <span class="alert alert-danger col-sm-4" id="envName5Error" style="display:none"></span>
+                </div>
+
+            </div>
+            <div id="page3" class="hide">
+                <div class="row">
+                    <h1>Enter the name of API</h1>
+                    <div style="margin: 0 10px 0 10px">
+                        <div style="display: inline-block; width: 150px;">
+                            <a id="bpage22" class="btn btn-default" >Prev</a>
+                        </div>
+                        <div style="display: inline-block; width: 150px; float:right; text-align: right;">
+                            <button class="btn btn-success" th:text="#{label.form.submit}" type="submit">Done</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin: 10px 10px 0 10px">
+                    <span class="alert alert-danger col-sm-4" id="SumError" style="display:none"></span>
+                    <label>Tester:</label>
+                    <select class="form-control" name="userIdTester" required="required" style="width: 100%;">
+                        <option th:each="user : ${users}" th:text="${user.getEmail()}" th:value="${user.getId()}">
+                            Vasya
+                        </option>
+                    </select>
+                    <span class="alert alert-danger col-sm-4" id="userIdTesterError" style="display:none"></span>
+                </div>
+                <div class="row" style="margin: 10px 10px 0 10px">
+                    <label>Dev:</label>
+                    <select class="form-control" name="userIdDev" required="required" style="width: 100%;">
+                        <option th:each="user : ${users}" th:text="${user.getEmail()}" th:value="${user.getId()}">
+                            Vasya
+                        </option>
+                    </select>
+                    <span class="alert alert-danger col-sm-4" id="userIdDevError" style="display:none"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    .hide{
+        display: none;
+    }
+    .show{
+        display: block;
+    }
+</style>
+<script th:inline="javascript">
+    var serverContext = [[@{/}]];
+
+        $(document).ready(function () {
+            $('form').submit(function (event) {
+                register(event);
+            });
+            $("#bpage2").click(function(){
+                $("#page1").removeClass("show").addClass("hide");
+                $("#page2").removeClass("hide").addClass("show");
+            });
+            $("#bpage22").click(function(){
+                $("#page3").removeClass("show").addClass("hide");
+                $("#page2").removeClass("hide").addClass("show");
+            });
+            $("#bpage1").click(function(){
+                $("#page2").removeClass("show").addClass("hide");
+                $("#page1").removeClass("hide").addClass("show");
+            });
+            $("#bpage3").click(function(){
+                $("#page2").removeClass("show").addClass("hide");
+                $("#page3").removeClass("hide").addClass("show");
+            });
+            $("#bshow3").click(function(){
+                $("#bshow3").hide();
+                $("#show3").removeClass("hide").addClass("show");
+            });
+            $("#bshow4").click(function(){
+                $("#bshow4").hide();
+                $("#show4").removeClass("hide").addClass("show");
+            });
+            $("#bshow5").click(function(){
+                $("#bshow5").hide();
+                $("#show5").removeClass("hide").addClass("show");
+            });
+        });
+
+    function register(event) {
+        event.preventDefault();
+        $(".alert").html("").hide();
+        $(".error-list").html("");
+        var formData = $('form').serialize();
+        $.post(serverContext + "func/add", formData, function (data) {
+            if (data.message == "success") {
+                window.location.href = serverContext + "funcs.html";
+            }
+        })
+            .fail(function (data) {
+                var errors = $.parseJSON(data.responseJSON.message);
+                $.each(errors, function (index, item) {
+                    if (item.field) {
+                        $("#SumError").show().append(item.defaultMessage + "<br/>");
+                        $("#" + item.field + "Error").show().append(item.defaultMessage + "<br/>");
+                    } else {
+                        $("#globalError").show().append(item.defaultMessage + "<br/>");
+                    }
+
+                });
+
+            });
+    }
+
+</script>
+</body>
+</html>

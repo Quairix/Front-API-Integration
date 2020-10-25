@@ -1,0 +1,83 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Тестирование</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/homepage.html}" th:text="#{label.pages.home.title}">home</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="?lang=en"><img class="langIcon" th:src="@{/resources/usa.png}"/></a>
+            </li>
+            <li style="margin-right:15px;">
+                <a href="?lang=ru_RU"><img class="langIcon" th:src="@{/resources/russian.png}"/></a>
+            </li>
+            <li><a th:href="@{/logout}" th:text="#{label.pages.logout}">logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="page">
+    <div class="container">
+        <div class="row">
+            <h1>Тестирование API</h1>
+        </div>
+        <div class="row" style="margin: 10px 10px 0 10px; text-align: center">
+            <label>Название:</label>
+            <label>/findall</label>
+        </div>
+        <div class="row" style="margin: 10px 10px 0 10px; text-align: center">
+            <div class="dblock" style="height: 500px; background-color: white;">
+                <table class="table">
+                    <tr>
+                        <td></td>
+                        <td>Статус</td>
+                        <td>Метод</td>
+                        <td>URL</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>200</td>
+                        <td>Get</td>
+                        <td>/findall</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dblock" style="height: 500px; background-color: white;">
+                <table class="table">
+                    <tr>
+                        <td width="50%">Запрос</td>
+                        <td>Ответ</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>{
+                            "balance":1111,
+                            "owner":"Tom"
+                            }
+                            ,
+                            {
+                            "balance":222,
+                            "owner":"Mike"
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .dblock{
+        display: inline-block;
+        width: 45%;
+    }
+</style>
+</body>
+</html>
